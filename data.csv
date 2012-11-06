@@ -1,0 +1,14 @@
+10,P_SMART_MON_HI,Smartphone Bulanan 3GB1,Smartphone Monthly 3GB,720,Unlimited,30 Days,One Time,AXIS/H,7168/256,3GB,128/64,
+NOTIFICATIONS|Before|P_SMART_MON_HI|Pemakaian Internet kamu sudah mencapai 90% batas FUP. Untuk detail pemakaian internet dan penawaran AXIS lainnya,klik http://net.axisworld.co.id Info838|Your internet usage has reached 90% of FUP. For internet usage details and another GREAT offers visit http://net.axisworld.co.id. Info 838
+NOTIFICATIONS|when|P_SMART_MON_HI|Pemakaian Internet kamu sdh mencapai batas FUP,kecepatan akan disesuaikan.Dapatkan penawaran menarik AXIS lainnya! Klik http://net.axisworld.co.id info838|Your usage has reach its FUP limit, your speed will be adjusted.Get another GREAT offer from AXIS! Klik http://net.axisworld.co.id Info838
+
+20,2P_BB_SOCIAL_D,Harian Blackberry Social Plus, Daily Blackberry Social Plus,490,2 MB,1 Days,One Time,AXIS/H,7168/256,N/A,N/A
+NOTIFICATIONS|Quota used up|2P_BB_SOCIAL_D|Paket Harian 2MB kamu sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Daily 2MB data packages. Call *123# and re-subscribe  offers.
+
+30,P_BB_SOCIAL_W,Mingguan Blackberry Social Plus,Weekly Blackberry Social Plus,620,10 MB,7 Days,One Time,AXIS/H,7168/256,N/A,N/A
+NOTIFICATIONS|Before used up|P_BB_SOCIAL_W|Saat ini kamu sdh menggunakan 5MB dari paket Mingguan 10MB kamu. Tel*123# utk terus menggunakan paket ini .|You have used 5MB of your Weekly 10MB data package. Call *123# and re-subscribe  offers.  
+NOTIFICATIONS|Quota used up|P_BB_SOCIAL_W|Paket Mingguan 10MB sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Weekly 10MB data package. Call *123# and re-subscribe  offers. 
+
+
+
+
