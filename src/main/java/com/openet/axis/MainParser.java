@@ -24,6 +24,7 @@ public class MainParser {
 		List<String> notificationQuery = new ArrayList<String>();
 		List<String> packageNameList = new ArrayList<String>();
 		List<String> packageIdList = new ArrayList<String>();
+		List<String> fup = new ArrayList<String>();
 		Packages lastPackage=null;
 		for (String data : packageList) {
 			if (!FileUtil.isEmpty(data) && !data.startsWith("#") && !data.startsWith("NOTIFICATIONS")) {
@@ -42,12 +43,12 @@ public class MainParser {
 				 */
 				pckQuery.add("/* "+lastPackage.getName()+" */");
 				pckQuery.add("/* ********************** */");
-
 				pckQuery.add(paket.generatePackageQuery());
 
 				/**
 				 * Create PackageGroup.
 				 */
+				pckGroupQuery.add("/* "+lastPackage.getName()+" */");
 				for (String string : queries) {
 					pckGroupQuery.add( string );
 				}
@@ -64,6 +65,14 @@ public class MainParser {
 				notification.generateQueryUnlimited(notificationQuery);
 				
 				
+				/**
+				 * FUP
+				 */
+				PolicyFup policyFup=new PolicyFup(paket);
+				fup.add("/* "+lastPackage.getName()+" */");
+				fup.add("/* ********************** */");
+				fup.add(policyFup.generateSql());
+				
 			} else if (data.startsWith("NOTIFICATIONS")){
 				Notification notification = new Notification(lastPackage);
 				notification.parseData(data, "|");
@@ -77,16 +86,22 @@ public class MainParser {
 		FileUtil.writeNewFile(path, PackageGroup.FILE_NAME, pckGroupQuery);//insertBL_PACKAGE_BAL_TYPE
 		FileUtil.writeNewFile(path, "insertBL_PACKAGE_BAL_TYPE.sql", balType);//
 		FileUtil.writeNewFile(path, "insertBL_NOTIFICATION.sql", notificationQuery);//
+		FileUtil.writeNewFile(path, "insertBL_POLICY_FUP.sql", fup);//
+
+		
 		/**
 		 * Create Verification.
 		 */
 		Verification ver=new Verification(packageIdList, packageNameList);
 		FileUtil.writeNewFile(path+File.separator+"verification"+File.separator, "verification_db.sql", ver.getQueries());//
 		/**
-		 * Create Roollback
+		 * Create Roollback query
 		 */
 		
 		Rollback rollback=new Rollback(packageIdList, packageNameList);
+		
+		
+		
 		
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_PACKAGE.sql", rollback.generateQuerybyID("BL_PACKAGE"));//
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_PACKAGE_GROUP.sql", rollback.generateQuerybyID("BL_PACKAGE_GROUP"));//
@@ -104,7 +119,7 @@ public class MainParser {
 			backup.add(  "create table bl_package_group_"+WO + " as (select * from bl_package_group);");
 			backup.add(  "create table bl_policy_fup_"+WO + " as (select * from bl_policy_fup);");
 			backup.add(  "create table bl_notification_"+WO + " as (select * from bl_notification);");
-			FileUtil.writeNewFile(path+File.separator, "backup_bl_table.sql", backup);//
+			FileUtil.writeNewFile(path+File.separator, "backup_bl_table.sql", backup);
 		}
 		
 		

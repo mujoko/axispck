@@ -89,6 +89,9 @@ public class Packages implements Serializable {
 
 	private String quota = "0";
 
+	private String indicator0="";
+	
+	
 	public void parseData(String data, String token) {
 
 		String toke = ",";
@@ -172,11 +175,25 @@ public class Packages implements Serializable {
 			}
 		}
 
-		//		if (dataList.hasMoreElements()) {
-		//String newValue = (String) dataList.nextElement();
-		//if (!FileUtil.isEmpty(newValue))
-		//	validity = newValue;
-		//		}
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue))
+				maxRecuringTime = newValue;
+		}
+
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue))
+				validForH = newValue;
+		}
+
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue))
+				indicator0 = newValue;
+			System.out.println(indicator0);
+		}
+
 
 		//		if (dataList.hasMoreElements()) {
 		//String newValue = (String) dataList.nextElement();
