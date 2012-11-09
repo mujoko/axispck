@@ -67,14 +67,13 @@ public class Notification implements Serializable {
 	 */
 	public List<String> generateQuery(List<String> queryUnlimited) {
 
+		queryUnlimited.add("/* "+paket.getName()+" */");
+		queryUnlimited.add("/* ********************** */");
+
+		
 		/**
 		 * AllowanceFinished
 		 * AllowanceThreshold1
-		 */
-//		or 
-		/**
-		 * AllowanceThreshold1 90%
-		 * AllowanceThreshold2 FUP limit
 		 */
 		String sqlInsert = new StringBuffer(sqlNoti).toString();
 		sqlInsert = sqlInsert.replace("PACKAGE_NAME_VALUE", packageName);
@@ -109,7 +108,14 @@ public class Notification implements Serializable {
 	}
 	
 	public List<String> generateQueryUnlimited(List<String> queryUnlimited) {
-		if (paket.getQuota().equals("614400000000")){
+		if (paket.getQuota().equals("614400000000") && !paket.getInlineResetValue().equals("N")){
+//			or 
+			/**
+			 * AllowanceThreshold1 90%
+			 * AllowanceThreshold2 FUP limit
+			 */
+			queryUnlimited.add("/* "+paket.getName()+" */");
+			queryUnlimited.add("/* ********************** */");
 			String sqlInsert = new StringBuffer(unlimited).toString();
 			sqlInsert = sqlInsert.replace("PACKAGE_NAME_VALUE", packageName);
 			queryUnlimited.add(sqlInsert);

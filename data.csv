@@ -1,14 +1,28 @@
-10,P_SMART_MON_HI,Smartphone Bulanan 3GB1,Smartphone Monthly 3GB,720,Unlimited,30 Days,One Time,AXIS/H,7168/256,3GB,128/64,
-NOTIFICATIONS|Before|P_SMART_MON_HI|Pemakaian Internet kamu sudah mencapai 90% batas FUP. Untuk detail pemakaian internet dan penawaran AXIS lainnya,klik http://net.axisworld.co.id Info838|Your internet usage has reached 90% of FUP. For internet usage details and another GREAT offers visit http://net.axisworld.co.id. Info 838
-NOTIFICATIONS|when|P_SMART_MON_HI|Pemakaian Internet kamu sdh mencapai batas FUP,kecepatan akan disesuaikan.Dapatkan penawaran menarik AXIS lainnya! Klik http://net.axisworld.co.id info838|Your usage has reach its FUP limit, your speed will be adjusted.Get another GREAT offer from AXIS! Klik http://net.axisworld.co.id Info838
+#10,P_SMART_MON_HI,Smartphone Bulanan 3GB1,Smartphone Monthly 3GB,720,Unlimited,30 Days,One Time,AXIS/H,7168/256,3GB,128/64,
+#NOTIFICATIONS|Before|P_SMART_MON_HI|Pemakaian Internet kamu sudah mencapai 90% batas FUP. Untuk detail pemakaian internet dan penawaran AXIS lainnya,klik http://net.axisworld.co.id Info 838|Your internet usage has reached 90% of FUP. For internet usage details and another GREAT offers visit http://net.axisworld.co.id. Info 838
+#NOTIFICATIONS|when|P_SMART_MON_HI|Pemakaian Internet kamu sdh mencapai batas FUP,kecepatan akan disesuaikan.Dapatkan penawaran menarik AXIS lainnya! Klik http://net.axisworld.co.id info838|Your usage has reach its FUP limit, your speed will be adjusted.Get another GREAT offer from AXIS! Klik http://net.axisworld.co.id Info 838
 
-20,2P_BB_SOCIAL_D,Harian Blackberry Social Plus, Daily Blackberry Social Plus,490,2 MB,1 Days,One Time,AXIS/H,7168/256,N/A,N/A
-NOTIFICATIONS|Quota used up|2P_BB_SOCIAL_D|Paket Harian 2MB kamu sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Daily 2MB data packages. Call *123# and re-subscribe  offers.
+#20,2P_BB_SOCIAL_D,Harian Blackberry Social Plus, Daily Blackberry Social Plus,490,2 MB,1 Days,One Time,AXIS/H,7168/256,N/A,N/A
+#NOTIFICATIONS|Quota used up|2P_BB_SOCIAL_D|Paket Harian 2MB kamu sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Daily 2MB data packages. Call *123# and re-subscribe  offers.
 
-30,P_BB_SOCIAL_W,Mingguan Blackberry Social Plus,Weekly Blackberry Social Plus,620,10 MB,7 Days,One Time,AXIS/H,7168/256,N/A,N/A
-NOTIFICATIONS|Before used up|P_BB_SOCIAL_W|Saat ini kamu sdh menggunakan 5MB dari paket Mingguan 10MB kamu. Tel*123# utk terus menggunakan paket ini .|You have used 5MB of your Weekly 10MB data package. Call *123# and re-subscribe  offers.  
-NOTIFICATIONS|Quota used up|P_BB_SOCIAL_W|Paket Mingguan 10MB sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Weekly 10MB data package. Call *123# and re-subscribe  offers. 
+#30,P_BB_SOCIAL_W,Mingguan Blackberry Social Plus,Weekly Blackberry Social Plus,620,10 MB,7 Days,One Time,AXIS/H,7168/256,N/A,N/A
+#NOTIFICATIONS|Before used up|P_BB_SOCIAL_W|Saat ini kamu sdh menggunakan 5MB dari paket Mingguan 10MB kamu. Tel*123# utk terus menggunakan paket ini .|You have used 5MB of your Weekly 10MB data package. Call *123# and re-subscribe  offers.  
+#NOTIFICATIONS|Quota used up|P_BB_SOCIAL_W|Paket Mingguan 10MB sdh terpakai semua. Tel*123# utk terus menggunakan paket ini.|You have used all your Weekly 10MB data package. Call *123# and re-subscribe  offers. 
+
+#PackageID,O/P,Name E, Name Bahasa, priority, quota, requrring, region, qos, fup, qos,inlinereset (A/Y/N)
+6006,O,P_AC_CLM1_HOURLY,Unlimited 1 Jam,Unlimited 1 Hour,2910,Unlimited,1 Hour,One Time,Home,T_7168_5120,10MB,T_128_64
+NOTIFICATIONS|Before|P_AC_CLM1_HOURLY|Selamat! Kamu mendapat GRATIS Internet sepuasnya sampai 1 jam kedepan. Pakai terus AXISmu dan dapatkan beragam penawaran lain dari AXIS. Info 838|Congrats! You got FREE Internet for 1 hour. Keep using your AXIS and get various offers from AXIS. Info 838
 
 
+6007,O,P_AC_CLM1_MIDNITE,Unlimited Seharian,Unlimited All Day,2900,Unlimited,23:59,One Time,Home,T_7168_5120,10MB,T_128_64
+NOTIFICATIONS|Before|P_AC_CLM1_MIDNITE|Selamat! Kini kamu dapat GRATIS Internetan hingga jam 24.00. Tetap pakai AXIS, dapatkan beragam penawaran dan kejutan lainnya dari AXIS. Info 838|Congrats! You got FREE Internet until 12 AM. Keep using AXIS and get more great surprises. Info 838
 
+6008,O,P_AC_CLM2_HOURLY,Unlimited 1 Jam,Unlimited 1 Hour,2910,Unlimited,1 Hour,One Time,Home,T_256_128,N/A,N/A
+NOTIFICATIONS|Before|P_AC_CLM2_HOURLY|Selamat! Kamu mendapat GRATIS Internet sepuasnya sampai 1 jam kedepan. Pakai terus AXISmu dan dapatkan beragam penawaran lain dari AXIS. Info 838|Congrats! You got FREE Internet for 1 hour. Keep using your AXIS and get various offers from AXIS. Info 838
+6009,O,P_AC_CLM2_MIDNITE,Unlimited Seharian,Unlimited All Day,2900,Unlimited,23:59,One Time,Home,T_256_128,N/A,N/A
+NOTIFICATIONS|Before|P_AC_CLM2_MIDNITE|Selamat! Kini kamu dapat GRATIS Internetan hingga jam 24.00. Tetap pakai AXIS, dapatkan beragam penawaran dan kejutan lainnya dari AXIS. Info 838|Congrats! You got FREE Internet until 12 AM. Keep using AXIS and get more great surprises. Info 838
+
+#PROVISIONING accumulator
+6010,P,P_PROMOCLM1,Accumulator3,Accumulator3,5000,0,23:59,0,HOME|NATIONN|INTERNATIONAL|,T_7168_5120,N/A,N/A,A
+6011,P,P_PROMOCLM2,Accumulator4,Accumulator3,5000,0,23:59,0,HOME|NATIONN|INTERNATIONAL|,T_7168_5120,N/A,N/A,A
 

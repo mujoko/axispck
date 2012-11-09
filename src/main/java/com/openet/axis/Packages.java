@@ -14,7 +14,7 @@ public class Packages implements Serializable {
 
 	static String FILE_NAME = "insertBL_PACKAGE.sql";
 
-	final static StringBuffer sqlInsertPackage=new StringBuffer("insert into bl_package (PACKAGE_ID,PACKAGE_NAME,PACKAGE_ALIAS_EN,PACKAGE_ALIAS_ID,PACKAGE_TYPE,PRIORITY,OFFER_START_DATE,OFFER_END_DATE,VALIDITY,VALIDITY_UNIT,MAX_RECURRING_TIMES,VALID_FOR_H,VALID_FOR_N,VALID_FOR_I,DEFAULT_QUOTA,EXPIRY_TIME,EXPIRY_REMINDER,EXPIRY_REMINDER_TIME,RESTRICTED,PREFERENCE) values (" +
+	final static StringBuffer sqlInsertPackage=new StringBuffer("insert into bl_package (PACKAGE_ID,PACKAGE_NAME,PACKAGE_ALIAS_EN,PACKAGE_ALIAS_ID,PACKAGE_TYPE,PRIORITY,OFFER_START_DATE,OFFER_END_DATE,VALIDITY,VALIDITY_UNIT,MAX_RECURRING_TIMES,VALID_FOR_H,VALID_FOR_N,VALID_FOR_I,DEFAULT_QUOTA,EXPIRY_TIME,EXPIRY_REMINDER,EXPIRY_REMINDER_TIME,RESTRICTED, INLINE_RESET, PREFERENCE) values (" +
 			"PACKAGE_ID_VALUE," +
 			"'PACKAGE_NAME_VALUE'," +
 			"'PACKAGE_ALIAS_EN_VALUE'," +
@@ -34,6 +34,7 @@ public class Packages implements Serializable {
 			"'EXPIRY_REMINDER_VALUE'," +
 			"EXPIRY_REMINDER_TIME_VALUE," +
 			"'RESTRICTED_VALUE'," +
+			"'INLINE_RESET_VALUE'," +
 			"PREFERENCE_VALUE);");
 
 
@@ -88,8 +89,12 @@ public class Packages implements Serializable {
 	private String preference = "0";
 
 	private String quota = "0";
+	
+	private String inlineResetValue = "N";
 
-	private String indicator0="";
+	private String indicator0="0";
+	private String treshold1="";
+	private String indicator1="0";
 	
 	
 	public void parseData(String data, String token) {
@@ -103,7 +108,9 @@ public class Packages implements Serializable {
 		if (dataList.hasMoreElements()) {
 			id = (String) dataList.nextElement();
 		}
-
+		if (dataList.hasMoreElements()) {
+			packageType = (String) dataList.nextElement();
+		}
 		if (dataList.hasMoreElements()) {
 			name = (String) dataList.nextElement();
 		}
@@ -111,14 +118,14 @@ public class Packages implements Serializable {
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue)) {
-				packageAliasEn = newValue;
+				packageAliasEn = newValue.trim();
 			}
 		}
 
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue)) {
-				packageAliasId = newValue;
+				packageAliasId = newValue.trim();
 
 			}
 		}
@@ -126,14 +133,14 @@ public class Packages implements Serializable {
 		//		if (dataList.hasMoreElements()) {
 		//String newValue = (String) dataList.nextElement();
 		//if (!FileUtil.isEmpty(newValue)) {
-		//	packageType = newValue;
+		//	packageType = newValue.trim();
 		//}
 		//		}
 
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue)) {
-				priority = newValue;
+				priority = newValue.trim();
 			}
 		}
 
@@ -157,50 +164,82 @@ public class Packages implements Serializable {
 		//		if (dataList.hasMoreElements()) {
 		//String newValue = (String) dataList.nextElement();
 		//if (!FileUtil.isEmpty(newValue))
-		//	offerStartDate = newValue;
+		//	offerStartDate = newValue.trim();
 		//		}
 		//
 		//		if (dataList.hasMoreElements()) {
 		//String newValue = (String) dataList.nextElement();
 		//if (!FileUtil.isEmpty(newValue))
-		//	offerEndDate = newValue;
+		//	offerEndDate = newValue.trim();
 		//		}
 
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
-			if (!FileUtil.isEmpty(newValue)){
+			if (!FileUtil.isEmpty(newValue) && !newValue.equals("23:59") && newValue.split(" ").length==2){
 				validity = newValue.split(" ")[0];
 				validityUnit = newValue.split(" ")[1];
 
+			} else if (!FileUtil.isEmpty(newValue) && newValue.equals("23:59")){
+				validity = "1";
+				validityUnit = "days";
+				expireTime="'23:59'";
 			}
 		}
 
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue))
-				maxRecuringTime = newValue;
+				if (newValue.toLowerCase().startsWith("one")){
+					maxRecuringTime = "1";
+				} else {
+					maxRecuringTime = newValue.trim();
+				}
 		}
 
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue))
-				validForH = newValue;
+				System.out.println(newValue);
+				if (newValue.toLowerCase().startsWith("home") || newValue.toLowerCase().equals("h")){
+					validForH = "Y";
+				} 
+				if (newValue.toLowerCase().contains("home")){
+					validForH = "Y";
+				} 
+				if (newValue.toLowerCase().contains("interna")){
+					validForI = "Y";	
+				}
+				if (newValue.toLowerCase().contains("nationn")){
+					validForN = "Y";	
+				}
+
+		}
+		//QOS0 Default
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue)&& !newValue.trim().equals("N/A")) 
+				indicator0 = newValue.trim();
 		}
 
+////FUP1
 		if (dataList.hasMoreElements()) {
 			String newValue = (String) dataList.nextElement();
 			if (!FileUtil.isEmpty(newValue))
-				indicator0 = newValue;
-			System.out.println(indicator0);
+				treshold1 = newValue.trim();
 		}
-
-
-		//		if (dataList.hasMoreElements()) {
-		//String newValue = (String) dataList.nextElement();
-		//if (!FileUtil.isEmpty(newValue))
-		//	validityUnit = newValue;
-		//		}
-
+////QOS1
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue)&&!newValue.trim().equals("N/A"))
+				indicator1 = newValue.trim();
+		}
+//INLINE reset
+		if (dataList.hasMoreElements()) {
+			String newValue = (String) dataList.nextElement();
+			if (!FileUtil.isEmpty(newValue))
+				System.out.println("Inline reset");
+			inlineResetValue = newValue.trim();
+		}
 	}
 
 	/**
@@ -241,6 +280,7 @@ public class Packages implements Serializable {
 		sqlInsert = sqlInsert.replace("EXPIRY_REMINDER_VALUE", expireReminder);
 		sqlInsert = sqlInsert.replace("EXPIRY_REMINDER_TIME_VALUE",	expireReminderTime);
 		sqlInsert = sqlInsert.replace("RESTRICTED_VALUE", restricted);
+		sqlInsert = sqlInsert.replace("INLINE_RESET_VALUE", inlineResetValue);
 		sqlInsert = sqlInsert.replace("PREFERENCE_VALUE", preference);
 		return sqlInsert;
 	}

@@ -60,10 +60,7 @@ public class MainParser {
 				 * Notification.
 				 */
 				Notification notification = new Notification(lastPackage);
-				notificationQuery.add("/* "+lastPackage.getName()+" */");
-				notificationQuery.add("/* ********************** */");
 				notification.generateQueryUnlimited(notificationQuery);
-				
 				
 				/**
 				 * FUP
@@ -101,11 +98,9 @@ public class MainParser {
 		Rollback rollback=new Rollback(packageIdList, packageNameList);
 		
 		
-		
-		
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_PACKAGE.sql", rollback.generateQuerybyID("BL_PACKAGE"));//
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_PACKAGE_GROUP.sql", rollback.generateQuerybyID("BL_PACKAGE_GROUP"));//
-
+		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_POLICY_FUP.sql", rollback.generateQuerybyID("BL_POLICY_FUP"));//
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_NOTIFICATION.sql", rollback.generateQuerybyName("BL_NOTIFICATION"));//
 		FileUtil.writeNewFile(path+File.separator+"rollback"+File.separator, "rollback_insertBL_PACKAGE_BAL_TYPE.sql", rollback.generateQuerybyName("BL_PACKAGE_BAL_TYPE"));//
 		
